@@ -1,0 +1,15 @@
+[development]
+    [bot]
+        token =
+        slip_updates =
+    [psql]
+        host =
+        port =
+        user =
+        password =
+        database =
+    [redis]
+        redis_host =
+        redis_port =
+        redis_database =
+        redis_password =

@@ -1,0 +1,6 @@
+aiogram==3.0.0b7
+aiogram_dialog==2.0.0b20
+redis==4.6.0
+fluentogram==1.1.6
+asyncpg==0.28.0
+
