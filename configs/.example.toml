@@ -1,5 +1,6 @@
 [development]
     [bot]
+    [bot]
         token =
         slip_updates =
     [psql]
