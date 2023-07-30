@@ -2,7 +2,7 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.infrst.database.dao.base import BaseDAO
+from app.infra.postgresql.dao.base import BaseDAO
 
 
 class UserDAO(BaseDAO):
