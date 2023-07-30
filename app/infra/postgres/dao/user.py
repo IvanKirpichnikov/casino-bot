@@ -2,10 +2,10 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.core.interfaces.dao.user import AbstractUserDAO
+from app.core.interfaces.dao.user import AbstractUser
 
 
-class UserDAO(AbstractUserDAO):
+class UserDAO(AbstractUser):
     __slots__ = ('connect',)
 
     def __init__(self, connect: Connection):

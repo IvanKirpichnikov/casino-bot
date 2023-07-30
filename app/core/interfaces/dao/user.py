@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 
 
-class AbstractUserDAO(ABC):
+class AbstractUser(ABC):
     """
-    Table users
+    data to postgresql
         id SERIAL,
         tid BIGINT,
         cid BIGINT,
