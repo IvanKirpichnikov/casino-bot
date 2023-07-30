@@ -30,6 +30,6 @@ async def _create_roles_enum(connect: Connection) -> None:
         ''', RoleType.get_all()
         )
 
-async def creates(connect: Connection) -> None:
+async def create(connect: Connection) -> None:
     await _create_roles_enum(connect)
     await _create_users_table(connect)
