@@ -8,22 +8,21 @@ from app.core.enums.roles_type import RoleType
 logger = getLogger(__name__)
 
 async def _create_users_table(connect: Connection) -> None:
-    logger.debug('Create table %r', 'users')
+    logger.debug('Creating table %r', 'users')
     async with connect.transaction():
         await connect.execute('''
             CREATE TABLE IF NOT EXISTS users(
-                id SERIAL,
-                tid BIGINT,
-                cid BIGINT,
+                id SERIAL PRIMARY KEY,
+                tid BIGINT UNIQUE NOT NULL,
+                cid BIGINT UNIQUE NOT NULL,
                 role roles,
-                datetime TIMESTAMPTZ,
-                PRIMARY KEY(id, tid, cid)
+                datetime TIMESTAMPTZ UNIQUE NOT NULL
             );
         ''')
 
 
 async def _create_roles_enum(connect: Connection) -> None:
-    logger.debug('create type %r', 'roles')
+    logger.debug('Creating type %r', 'roles')
     async with connect.transaction():
         await connect.execute('''
             CREATE TYPE roles AS ENUM $1:
