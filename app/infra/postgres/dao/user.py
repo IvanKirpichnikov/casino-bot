@@ -2,10 +2,10 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.infra.postgresql.dao.base import BaseDAO
+from app.core.interfaces.dao.user import AbstractUserDAO
 
 
-class UserDAO(BaseDAO):
+class UserDAO(AbstractUserDAO):
     __slots__ = ('connect',)
 
     def __init__(self, connect: Connection):
@@ -25,13 +25,13 @@ class UserDAO(BaseDAO):
                 );
             ''')
 
-    async def add(self, tid: int, cid: int, datetimeutc: datetime) -> None:
+    async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
         connect = self.connect
         async with connect.transaction():
             await connect.execute('''
                 INSERT INTO users(tid, cid, datetime) VALUES($1, $2, $3)
                 ON CONFLICT DO NOTHING;
-            ''', tid, cid, datetimeutc
+            ''', tid, cid, dtutc
             )
 
     async def delete(self, tid: int) -> None:
