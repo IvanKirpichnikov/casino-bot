@@ -16,6 +16,7 @@ async def _create_users_table(connect: Connection) -> None:
                 tid BIGINT UNIQUE NOT NULL,
                 cid BIGINT UNIQUE NOT NULL,
                 role roles,
+                referrer_id INT REFERENCES referral(id),
                 datetime TIMESTAMPTZ UNIQUE NOT NULL
             );
         ''')
