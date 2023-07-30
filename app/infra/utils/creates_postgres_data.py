@@ -26,8 +26,8 @@ async def _create_roles_enum(connect: Connection) -> None:
     logger.debug('create type %r', 'roles')
     async with connect.transaction():
         await connect.execute('''
-            CREATE TYPE roles AS ENUM $1:
-        ''', RoleType.get_all()
+            CREATE TYPE roles AS ENUM {}
+        '''.format(tuple(RoleType.get_all()))
         )
 
 async def create(connect: Connection) -> None:
