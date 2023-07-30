@@ -24,4 +24,4 @@ A telegram casino bot (?)
 
 # Credits
 - [@IvanKirpichnikov](https://github.com/IvanKirpichnikov)
-- [@shihkebab](https://github.com/shihkebab) huy
+- [@shihkebab](https://github.com/shihkebab)
