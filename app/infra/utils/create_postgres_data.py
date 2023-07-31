@@ -27,7 +27,7 @@ async def _create_referral_table(connect: Connection) -> None:
     logger.debug('Creating table %r', 'referral')
     async with connect.transaction():
         await connect.execute('''
-            CREATE TABLE IF NOT EXISTS referral(
+            CREATE TABLE IF NOT EXISTS referrals(
                 id INT PRIMARY KEY REFERENCES users ON DELETE CASCADE,
                 referrers_count INT DEFAULT 0,
                 referral_link TEXT
