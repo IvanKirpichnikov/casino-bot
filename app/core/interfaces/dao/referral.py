@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 
 
-class AbstractDeepLink(ABC):
+class AbstractReferral(ABC):
     @abstractmethod
     async def add(self, tid: int) -> None:
         pass
@@ -9,9 +9,3 @@ class AbstractDeepLink(ABC):
     @abstractmethod
     async def create(self, tid: int) -> None:
         pass
-
-    @abstractmethod
-    async def
-
-
-

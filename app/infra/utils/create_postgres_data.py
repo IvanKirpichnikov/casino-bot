@@ -7,6 +7,7 @@ from app.core.enums.roles_type import RoleType
 
 logger = getLogger(__name__)
 
+
 async def _create_users_table(connect: Connection) -> None:
     logger.debug('Creating table %r', 'users')
     async with connect.transaction():
@@ -32,14 +33,13 @@ async def _create_referral_table(connect: Connection) -> None:
                 referral_link TEXT
             );
         ''')
-
     
 async def _create_roles_enum(connect: Connection) -> None:
     logger.debug('Creating type %r', 'roles')
     async with connect.transaction():
         await connect.execute('''
-            CREATE TYPE roles AS ENUM $1:
-        ''', RoleType.get_all()
+            CREATE TYPE roles AS ENUM {};
+        '''.format(tuple(RoleType.get_all()))
         )
 
 async def create(connect: Connection) -> None:

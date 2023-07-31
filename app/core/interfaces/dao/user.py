@@ -3,15 +3,6 @@ from datetime import datetime
 
 
 class AbstractUser(ABC):
-    """
-    data to postgresql
-        id SERIAL,
-        tid BIGINT,
-        cid BIGINT,
-        role SMALLINT REFERENCES roles(name) ON DELETE CASCADE,
-        datetime TIMESTAMPTZ,
-        PRIMARY KEY(id, tid, cid, datetime)
-    """
     @abstractmethod
     async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
         """
