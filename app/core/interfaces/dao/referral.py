@@ -7,5 +7,5 @@ class AbstractReferral(ABC):
         pass
 
     @abstractmethod
-    async def create(self, tid: int) -> None:
+    async def get_referrers_count(self, tid: int) -> None:
         pass
