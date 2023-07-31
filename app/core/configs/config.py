@@ -31,7 +31,7 @@ class Config:
 
 
 settings = Dynaconf(
-    settings_files=['configs/.toml'],
+    settings_files=['.toml'],
     environments=True
 )
 
