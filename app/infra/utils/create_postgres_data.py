@@ -23,7 +23,7 @@ async def _create_users_table(connect: Connection) -> None:
 
 
 async def _create_referral_table(connect: Connection) -> None:
-    logger.debug('Creating table %r', 'refferal')
+    logger.debug('Creating table %r', 'referral')
     async with connect.transaction():
         await connect.execute('''
             CREATE TABLE IF NOT EXISTS referral(
