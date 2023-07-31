@@ -20,3 +20,9 @@ class AbstractUser(ABC):
         :param tid: user telegram id
         :return: None
         """
+
+    async def get_language(self, tid: int) -> str:
+        pass
+
+    async def update_language(self, tid: int, lang_code: str) -> None:
+        pass

@@ -27,3 +27,22 @@ class UserDAO(AbstractUser):
                 DELETE FROM users WHERE tid = $1;
             ''', tid
             )
+
+    async def get_language(self, tid: int) -> str:
+        connect = self.connect
+        async with connect.transaction():
+            cursor = await connect.cursor('''
+                SELECT language FROM users
+                WHERE tid = $1
+            ''', tid
+            )
+            data = await cursor.fetchrow()
+            return data.get('lang')
+
+    async def update_language(self, tid: int, lang_code: str) -> None:
+        connect = self.connect
+        async with connect.transaction():
+            await connect.execute('''
+                UPDATE users SET language = $1
+                WHERE tid = $2;
+            ''')
