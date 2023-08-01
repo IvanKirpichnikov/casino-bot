@@ -18,12 +18,11 @@ class ReferralDAO(AbstractReferral):
 
     async def get_referrals_count(self, tid: int) -> int:
         connect = self.connect
-        async with connect.transaction():
-            cursor = await connect.cursor('''
-                SELECT referrers_count FROM referrals
-                JOIN users ON users.id = referrals.id
-                WHERE users.tid = $1;
-            '''
-            )
-            data = await cursor.fetchrow()
-            return data
+        cursor = await connect.cursor('''
+            SELECT referrals_count FROM referrals
+            JOIN users ON users.id = referrals.id
+            WHERE users.tid = $1;
+        '''
+        )
+        data = await cursor.fetchrow()
+        return data.get('referrals_count')
