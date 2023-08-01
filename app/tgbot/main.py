@@ -7,7 +7,7 @@ from app.core.configs.config import config
 from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
 
 
-def main() -> None:
+async def main() -> None:
     bot = Bot(
         config.BOT.token,
         parse_mode=ParseMode.HTML
