@@ -9,7 +9,7 @@ class AbstractReferral(ABC):
 
         :param tid: user telegram id
         :referral_link: referral link
-        :return: int
+        :return: None
         """
 
     @abstractmethod
