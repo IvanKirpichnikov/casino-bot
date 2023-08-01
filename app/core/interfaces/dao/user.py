@@ -29,14 +29,14 @@ class AbstractUser(ABC):
         Get user's language code
 
         :param tid: user telegram id
-        :return: language code
+        :return: str
         """
 
     @abstractmethod
     async def update_language(self, tid: int, lang_code: str) -> None:
         """
         Update user's language
-        
+
         :param tid: user telegram id
         :param lang_code: language code
         :return: None
