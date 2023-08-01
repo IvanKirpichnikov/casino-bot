@@ -2,28 +2,14 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.core.interfaces.dao.user import AbstractUserDAO
+from app.core.interfaces.dao.user import AbstractUser
 
 
-class UserDAO(AbstractUserDAO):
+class UserDAO(AbstractUser):
     __slots__ = ('connect',)
 
     def __init__(self, connect: Connection):
         self.connect = connect
-
-    async def create_table(self) -> None:
-        connect = self.connect
-        async with connect.transaction():
-            await connect.execute('''
-                CREATE TABLE IF NOT EXISTS users(
-                    id SERIAL,
-                    tid BIGINT,
-                    cid BIGINT,
-                    role SMALLINT REFERENCES roles(name) ON DELETE CASCADE,
-                    datetime TIMESTAMPTZ,
-                    PRIMARY KEY(id, tid, cid, datetime)
-                );
-            ''')
 
     async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
         connect = self.connect
@@ -41,3 +27,22 @@ class UserDAO(AbstractUserDAO):
                 DELETE FROM users WHERE tid = $1;
             ''', tid
             )
+
+    async def get_language(self, tid: int) -> str:
+        connect = self.connect
+        async with connect.transaction():
+            cursor = await connect.cursor('''
+                SELECT language FROM users
+                WHERE tid = $1
+            ''', tid
+            )
+            data = await cursor.fetchrow()
+            return data.get('lang')
+
+    async def update_language(self, tid: int, lang_code: str) -> None:
+        connect = self.connect
+        async with connect.transaction():
+            await connect.execute('''
+                UPDATE users SET language = $1
+                WHERE tid = $2;
+            ''')

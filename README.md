@@ -1,5 +1,8 @@
 # 🎰 Casino 678
-![Status - Planning](https://img.shields.io/badge/Status-Planning-f0e511)
+![Telegram](https://img.shields.io/badge/Telegram-@casino__678__bot-2288ba?style=flat-square&link=https://t.me/casino_678_bot)
+
+![Status](https://img.shields.io/badge/Status-Planning-f0e511?style=flat-square)
+![Licence](https://img.shields.io/badge/License-MIT-a90001?style=flat-square&link=https://opensource.org/license/mit/)
 
 A telegram casino bot (?)
 
@@ -12,6 +15,7 @@ A telegram casino bot (?)
 - [Redis](https://redis.io/) — Persistent k-v storage
 - [Taskiq](https://github.com/taskiq-python/taskiq) — Sheduler
 - [NATS](https://nats.io/) — Queue
+
 
 
 ## Installation
