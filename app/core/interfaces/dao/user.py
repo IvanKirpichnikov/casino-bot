@@ -7,6 +7,7 @@ class AbstractUser(ABC):
     async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
         """
         Add user
+
         :param tid: user telegram id
         :param cid: user chat id
         :param dtutc: datetime utc format
@@ -17,12 +18,26 @@ class AbstractUser(ABC):
     async def delete(self, tid: int) -> None:
         """
         Delete user
+
         :param tid: user telegram id
         :return: None
         """
 
+    @abstractmethod
     async def get_language(self, tid: int) -> str:
-        pass
+        """
+        Get user's language code
 
+        :param tid: user telegram id
+        :return: language code
+        """
+
+    @abstractmethod
     async def update_language(self, tid: int, lang_code: str) -> None:
-        pass
+        """
+        Update user's language
+        
+        :param tid: user telegram id
+        :param lang_code: language code
+        :return: None
+        """
