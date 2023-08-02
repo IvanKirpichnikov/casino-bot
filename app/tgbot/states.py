@@ -2,12 +2,12 @@ from aiogram.fsm.state import StatesGroup, State
 
 
 class MainMenuState(StatesGroup):
-    automates = State()
+    slot_machines = State()
     profile = State()
     about = State()
 
 
-class AutomatesState(StatesGroup):
+class SlotsMachinesState(StatesGroup):
     roulette = State()
     dice = State()
     bandit = State()
