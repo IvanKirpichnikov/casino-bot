@@ -22,7 +22,7 @@ class L10NMiddleware(BaseMiddleware):
         
         connect: Connection = data.get('connect')
         dao: DAO = data.get('dao')
-        user_language = await dao.user.get_language(user.id)
+        user_language = await dao.users.get_language(user.id)
         hub: TranslatorHub = data.get('_hub')
         l10n = hub.get_translator_by_locale(user_language)
         

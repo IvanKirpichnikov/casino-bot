@@ -5,6 +5,7 @@ from redis.asyncio import Redis
 
 from app.core.configs.config import config
 from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
+from app.tgbot.utils.get_translator_hub import get_translator_hub
 from app.infra.utils.create_pool import create_pool
 
 
@@ -34,11 +35,13 @@ async def main() -> None:
     
     dp['redis'] = redis
     dp['pool'] = pool
+    dp['_hub'] = get_translator_hub()
     
     dp.update.middleware(DAOMiddleware())
     dp.update.middleware(L10NMiddleware())
     dp.callback_query.middleware(ThrottlingMiddleware())
     dp.message.middleware(ThrottlingMiddleware())
+    
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
