@@ -1,8 +1,13 @@
 from abc import ABC, abstractmethod
 from typing import List
 
+from app.core.dto.roles import RolesDTO
 
-class AbstractRole(ABC):
+
+class AbstractRoles(ABC):
     @abstractmethod
-    async def get(self) -> List[str]:
-        pass
+    async def get(self) -> RolesDTO:
+        """
+        :return: RolesDTO
+        
+        """

@@ -9,6 +9,7 @@ from app.infra.utils.create_pool import create_pool
 
 
 async def main() -> None:
+    pool = await create_pool(config)
     redis = Redis(
         host=config.REDIS.host,
         port=config.REDIS.port,
@@ -16,10 +17,10 @@ async def main() -> None:
         db=config.REDIS.db
     )
     bot = Bot(
-        config.BOT.token,
+        config.bot.token,
         parse_mode=ParseMode.HTML
     )
-    if config.BOT.skip_updates:
+    if config.bot.skip_updates:
         await bot.delete_webhook(drop_pending_updates=True)
     
     storage = RedisStorage(
@@ -32,11 +33,13 @@ async def main() -> None:
     )
     
     dp['redis'] = redis
-    dp['pool'] = await create_pool(config)
+    dp['pool'] = pool
     
     dp.update.middleware(DAOMiddleware())
     dp.update.middleware(L10NMiddleware())
     dp.callback_query.middleware(ThrottlingMiddleware())
     dp.message.middleware(ThrottlingMiddleware())
-    
-    await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+    try:
+        await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
+    finally:
+        await pool.close()

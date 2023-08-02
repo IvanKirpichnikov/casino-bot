@@ -4,7 +4,7 @@ from app.core.configs.config import Config
 
 
 async def create_pool(config: Config) -> Pool:
-    psql = config.PSQL
+    psql = config.psql
     return pool(
         user=psql.user,
         password=psql.password,

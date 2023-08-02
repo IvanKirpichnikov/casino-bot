@@ -34,7 +34,8 @@ async def _create_referral_table(connect: Connection) -> None:
                 referral_link TEXT
             );
         ''')
-    
+
+
 async def _create_roles_enum(connect: Connection) -> None:
     logger.debug('Creating type %r', 'roles')
     async with connect.transaction():
@@ -42,6 +43,7 @@ async def _create_roles_enum(connect: Connection) -> None:
             CREATE TYPE roles AS ENUM {};
         '''.format(tuple(RoleType.get_all()))
         )
+
 
 async def create(connect: Connection) -> None:
     await _create_roles_enum(connect)

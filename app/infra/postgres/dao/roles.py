@@ -2,16 +2,16 @@ from typing import List
 
 from asyncpg import Connection
 
-from app.core.interfaces.dao.roles import AbstractRole
+from app.core.interfaces.dao.roles import AbstractRoles
 from app.core.dto.roles import RolesDTO
 
 
-class RoleDAO(AbstractRole):
+class RolesDAO(AbstractRoles):
     __slots__ = ('connect',)
-
+    
     def __init__(self, connect: Connection):
         self.connect = connect
-
+    
     async def get(self) -> RolesDTO:
         connect = self.connect
         async with connect.transaction(readonly=True):
@@ -20,4 +20,3 @@ class RoleDAO(AbstractRole):
             ''')
             data = await cursor.fetchrow()
             return RolesDTO()
-
