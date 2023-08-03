@@ -2,4 +2,4 @@ from aiogram.fsm.state import StatesGroup, State
 
 
 class MainMenuState(StatesGroup):
-    main = State()
+    select_option = State()

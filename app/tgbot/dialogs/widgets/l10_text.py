@@ -11,8 +11,8 @@ if TYPE_CHECKING:
 
 class L10N(Text):
     def __init__(self, key: str, when: WhenCondition = None):
-        self.key = key
         super().__init__(when=when)
+        self.key = key
     
     async def _render_text(self, data, manager: DialogManager) -> str:
         l10n: TranslatorRunner = manager.middleware_data.get('l10n')
