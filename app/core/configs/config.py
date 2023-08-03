@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from ipaddress import IPv4Address
 
 from adaptix import NameStyle, Retort, name_mapping
 from dynaconf import Dynaconf
@@ -26,7 +25,7 @@ class _PSQLConfig:
     :param database: postgresql database name
     
     """
-    host: IPv4Address
+    host: str
     port: int
     user: str
     password: str
