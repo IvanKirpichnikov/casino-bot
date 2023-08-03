@@ -1,17 +1,17 @@
 from aiogram.fsm.state import StatesGroup, State
 
 
-class AutomatesState(StatesGroup):
-    main = State()
+class AutomatesMenu(StatesGroup):
+    select_slot = State()
 
 
 class SlotsMachineState(StatesGroup):
-    main = State()
+    make_bet = State()
 
 
 class DiceState(StatesGroup):
-    main = State()
+    make_bet = State()
 
 
 class BanditState(StatesGroup):
-    main = State()
+    make_bet = State()
