@@ -9,6 +9,7 @@ from app.core.configs.config import config
 from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
 from app.tgbot.utils.get_translator_hub import get_translator_hub
 from app.tgbot.dialogs.register import register_dialogs
+from app.infra.utils.create_postgres_data import create_postgres_data
 
 
 async def main() -> None:
@@ -50,6 +51,7 @@ async def main() -> None:
     dp.callback_query.middleware(ThrottlingMiddleware())
     dp.message.middleware(ThrottlingMiddleware())
     
+    await create_postgres_data(pool)
     setup_dialogs(dp)
     register_dialogs(dp)
     
