@@ -2,7 +2,9 @@ from aiogram.fsm.state import StatesGroup, State
 
 
 class MainMenuState(StatesGroup):
+    main = State()
     slot_machines = State()
+    top_players = State
     profile = State()
     about = State()
 
