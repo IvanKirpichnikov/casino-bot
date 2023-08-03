@@ -5,7 +5,7 @@ class AutomatesState(StatesGroup):
     main = State()
 
 
-class SlotsMachineState(StatesGroup):
+class RouletteState(StatesGroup):
     main = State()
 
 
