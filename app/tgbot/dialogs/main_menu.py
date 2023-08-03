@@ -2,7 +2,12 @@ from aiogram_dialog import Dialog, Window, StartMode
 from aiogram_dialog.widgets.kbd import Start, Row
 
 from aiogram_dialog.widgets.text import Const
-from app.tgbot.states import MainMenuState
+
+from app.tgbot.states.main_menu import MainMenuState
+from app.tgbot.states.profile import ProfileState
+from app.tgbot.states.tops import TopsState
+from app.tgbot.states.automates import AutomatesState
+from app.tgbot.states.about import AboutState
 
 main_menu_dialog = Dialog(
     Window(
@@ -10,7 +15,7 @@ main_menu_dialog = Dialog(
         Start(
             Const('Автоматы'),
             id='slot_machines',
-            state=MainMenuState.slot_machines,
+            state=AutomatesState.main,
             mode=StartMode.RESET_STACK
 
         ),
@@ -18,14 +23,14 @@ main_menu_dialog = Dialog(
             Start(
                 Const('Профиль'),
                 id='profile',
-                state=MainMenuState.profile,
+                state=ProfileState.main,
                 mode=StartMode.RESET_STACK
             ),
 
             Start(
                 Const('Топ игроков'),
                 id='top_players',
-                state=MainMenuState.top_players,
+                state=TopsState.main,
                 mode=StartMode.RESET_STACK
             ),
         ),
@@ -33,7 +38,7 @@ main_menu_dialog = Dialog(
         Start(
             Const('О нас'),
             id='about',
-            state=MainMenuState.about,
+            state=AboutState.main,
             mode=StartMode.RESET_STACK
         ),
 
