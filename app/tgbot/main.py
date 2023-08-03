@@ -1,21 +1,29 @@
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.redis import RedisStorage, DefaultKeyBuilder
+from aiogram_dialog import setup_dialogs
+from asyncpg import create_pool
 from redis.asyncio import Redis
 
 from app.core.configs.config import config
 from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
 from app.tgbot.utils.get_translator_hub import get_translator_hub
-from app.infra.utils.create_pool import create_pool
+from app.tgbot.dialogs.register import register_dialogs
 
 
 async def main() -> None:
-    pool = await create_pool(config)
+    pool = await create_pool(
+        user=config.psql.user,
+        password=config.psql.password,
+        database=config.psql.database,
+        host=config.psql.host,
+        port=config.psql.port
+    )
     redis = Redis(
-        host=config.REDIS.host,
-        port=config.REDIS.port,
-        password=config.REDIS.password,
-        db=config.REDIS.db
+        host=config.redis.host,
+        port=config.redis.port,
+        password=config.redis.password,
+        db=config.redis.db
     )
     bot = Bot(
         config.bot.token,
@@ -41,6 +49,9 @@ async def main() -> None:
     dp.update.middleware(L10NMiddleware())
     dp.callback_query.middleware(ThrottlingMiddleware())
     dp.message.middleware(ThrottlingMiddleware())
+    
+    setup_dialogs(dp)
+    register_dialogs(dp)
     
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
