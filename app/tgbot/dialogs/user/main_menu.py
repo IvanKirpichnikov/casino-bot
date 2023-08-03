@@ -6,7 +6,7 @@ from aiogram_dialog.widgets.text import Const
 from app.tgbot.states.main_menu import MainMenuState
 from app.tgbot.states.profile import ProfileState
 from app.tgbot.states.tops import TopsState
-from app.tgbot.states.automates import AutomatesState
+from app.tgbot.states.automates import AutomatesMenu
 from app.tgbot.states.about import AboutState
 
 main_menu_dialog = Dialog(
@@ -15,7 +15,7 @@ main_menu_dialog = Dialog(
         Start(
             Const('Автоматы'),
             id='slot_machines',
-            state=AutomatesState.main,
+            state=AutomatesMenu.select_slot,
             mode=StartMode.RESET_STACK
 
         ),
@@ -42,6 +42,6 @@ main_menu_dialog = Dialog(
             mode=StartMode.RESET_STACK
         ),
 
-        state=MainMenuState.main,
+        state=MainMenuState.select_option,
     ),
 )
