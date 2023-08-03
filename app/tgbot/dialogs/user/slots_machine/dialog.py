@@ -12,8 +12,8 @@ slots_machine_dialog = Dialog(
     Window(
         L10N('select-game'),
         Start(
-            L10N('btn-roulette'),
-            id='slot-machine',
+            text=L10N('btn-roulette'),
+            id='slot_machine',
             state=RouletteState.make_bet,
             mode=StartMode.RESET_STACK
         ),

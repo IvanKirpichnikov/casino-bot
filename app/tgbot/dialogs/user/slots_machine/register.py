@@ -1,4 +1,7 @@
 from aiogram import Dispatcher
 
+from app.tgbot.dialogs.user.slots_machine.dialog import slots_machine_dialog
 
-def
+
+def register_sm_dialog(dp: Dispatcher) -> None:
+    dp.include_router(slots_machine_dialog)
