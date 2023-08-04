@@ -17,16 +17,8 @@ async def _create_users_table(connect: Connection) -> None:
             tid BIGINT UNIQUE NOT NULL,
             cid BIGINT UNIQUE NOT NULL,
             language VARCHAR(2) DEFAULT 'en',
-            datetime TIMESTAMPTZ UNIQUE NOT NULL
-        );
-    ''')
-
-
-async def _create_roles_table(connect: Connection) -> None:
-    await connect.execute('''
-        CREATE IF NOT EXISTS roles(
-            id INT PRIMARY KEY REFERENCES users,
             role ROLES,
+            datetime TIMESTAMPTZ UNIQUE NOT NULL
         );
     ''')
 
