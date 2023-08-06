@@ -1,13 +1,13 @@
 from dataclasses import dataclass
 from typing import List
 
-from app.core.enums.roles_type import RoleType
+from app.core.enums import RolesType
 
 
 @dataclass(frozen=True)
-class RolesDTO:
+class RoleDTO:
     """
     DTO object
     
     """
-    roles: List[RoleType]
+    roles: List[RolesType]
