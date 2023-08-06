@@ -1,12 +1,12 @@
+from contextlib import suppress
 import logging
-from logging import getLogger
 
 from asyncpg import Connection, Pool, DuplicateObjectError
 
-from app.core.enums.roles_type import RoleType
+from app.core.enums import RolesType
 
 
-logger = getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 
 async def _create_users_table(connect: Connection) -> None:
@@ -26,8 +26,8 @@ async def _create_users_table(connect: Connection) -> None:
 async def _create_referrers_table(connect: Connection) -> None:
     await connect.execute('''
         CREATE TABLE IF NOT EXISTS referrers(
-            id INT PRIMARY KEY REFERENCES users,
-            referrer_id INT REFERENCES referrals(id)
+            id INT PRIMARY KEY REFERENCES users ON DELETE CASCADE,
+            referrer_id INT REFERENCES referrals(id) ON DELETE CASCADE
         );
     ''')
 
@@ -38,7 +38,7 @@ async def _create_referrals_table(connect: Connection) -> None:
         CREATE TABLE IF NOT EXISTS referrals(
             id INT PRIMARY KEY REFERENCES users ON DELETE CASCADE,
             referrers_count INT DEFAULT 0,
-            referral_link TEXT
+            deep_link TEXT
         );
     ''')
 
@@ -47,15 +47,14 @@ async def _create_roles_enum(connect: Connection) -> None:
     logger.debug('Creating type %r', 'roles')
     await connect.execute('''
         CREATE TYPE roles AS ENUM {};
-    '''.format(tuple(RoleType.get_all()))
+    '''.format(tuple(RolesType.get_all()))
     )
 
 
 async def create_postgres_data(pool: Pool) -> None:
     async with pool.acquire() as connect:
-        try:
+        with suppress(DuplicateObjectError):
             await _create_roles_enum(connect)
-        except DuplicateObjectError as e:
-            pass
         await _create_referrals_table(connect)
         await _create_users_table(connect)
+        await _create_referrers_table(connect)
