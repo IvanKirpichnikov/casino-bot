@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 
 
-class AbstractUsers(ABC):
+class AbstractUserDAO(ABC):
     @abstractmethod
     async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
         """
