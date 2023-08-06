@@ -2,7 +2,7 @@ from enum import Enum
 from typing import List
 
 
-class RoleType(str, Enum):
+class RolesType(str, Enum):
     """
     Listed user roles in the bot
     
