@@ -2,10 +2,12 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.core.interfaces.dao.user import AbstractUsers
+from app.core.dto import UserLanguageDTO
+from app.core.enums import LanguagesType
+from app.core.interfaces.dao.user import AbstractUserDAO
 
 
-class UsersDAO(AbstractUsers):
+class UserDAO(AbstractUserDAO):
     __slots__ = ('connect',)
     
     def __init__(self, connect: Connection):
@@ -29,14 +31,14 @@ class UsersDAO(AbstractUsers):
             ''', tid
             )
     
-    async def get_language(self, tid: int) -> str:
+    async def get_language(self, tid: int) -> UserLanguageDTO:
         cursor = await self.connect.cursor('''
             SELECT language FROM users
             WHERE tid = $1
         ''', tid
         )
         data = await cursor.fetchrow()
-        return data.get('lang')
+        return UserLanguageDTO(language=data.get('language'))
     
     async def update_language(self, tid: int, lang_code: str) -> None:
         connect = self.connect

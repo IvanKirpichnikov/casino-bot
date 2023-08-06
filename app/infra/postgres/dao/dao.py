@@ -1,6 +1,6 @@
 from asyncpg import Connection
 
-from app.infra.postgres.dao import RolesDAO, ReferralDAO, UsersDAO
+from app.infra.postgres.dao import RoleDAO, UserDAO
 
 
 class DAO:
@@ -16,6 +16,6 @@ class DAO:
         :return None:
         
         """
-        self.roles = RolesDAO(connect)
-        self.referrals = ReferralDAO(connect)
-        self.users = UsersDAO(connect)
+        self.roles = RoleDAO(connect)
+        # self.referrals = ReferralDAO(connect)
+        self.users = UserDAO(connect)
