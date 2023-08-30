@@ -1,11 +1,12 @@
 from dataclasses import dataclass
+from typing import Dict
 
-from adaptix import NameStyle, Retort, name_mapping
+from adaptix import name_mapping, NameStyle, Retort
 from dynaconf import Dynaconf
 
 
 @dataclass(frozen=True)
-class _BotConfig:
+class _TGBotConfig:
     """
     :param token: Telegram bot token
     :param skip_updates: skip bot updates if True
@@ -48,28 +49,31 @@ class _RedisConfig:
 
 
 @dataclass(frozen=True)
-class Config:
+class _WorkConfig:
     """
-    :param bot: Bot config
+    :param tgbot: Telegram bot config
     :param psql: Postgresql config
     :param redis: Redis config
     
     """
-    bot: _BotConfig
+    tgbot: _TGBotConfig
     psql: _PSQLConfig
     redis: _RedisConfig
 
 
-dynaconf = Dynaconf(
-    settings_files=['.toml'],
-    environments=True
-)
+@dataclass(frozen=True)
+class Config:
+    work: _WorkConfig
 
-data = dynaconf.as_dict()
 
-retort = Retort(
-    recipe=[
-        name_mapping(Config, name_style=NameStyle.UPPER)
-    ]
-)
-config = retort.load(data, Config)
+def get_config() -> Config:
+    data: Dict = Dynaconf(
+        settings_files=['configs/.toml']
+    ).as_dict()
+    
+    retort = Retort(
+        recipe=[
+            name_mapping(Config, name_style=NameStyle.UPPER)
+        ]
+    )
+    return retort.load(data, Config)

@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING
+from typing import Any, Dict, TYPE_CHECKING
 
 from aiogram_dialog import DialogManager
 from aiogram_dialog.widgets.common import WhenCondition
@@ -14,12 +14,24 @@ class L10N(Text):
         super().__init__(when=when)
         self.key = key
     
-    async def _render_text(self, data, manager: DialogManager) -> str:
+    async def _render_text(
+        self,
+        data: Dict[str, Any],
+        manager: DialogManager
+    ) -> str:
         l10n: TranslatorRunner = manager.middleware_data.get('l10n')
+<<<<<<< HEAD
         if data is None:
             text = l10n.get(self.key)
             print(text)
             return text
         text = l10n.get(self.key, **data)
         print(text)
+=======
+        if data:
+            text = l10n.get(self.key, **data)
+        else:
+            text = l10n.get(self.key)
+        
+>>>>>>> test
         return text

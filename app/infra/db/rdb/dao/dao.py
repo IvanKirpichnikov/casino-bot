@@ -1,6 +1,6 @@
 from asyncpg import Connection
 
-from app.infra.postgres.dao import RoleDAO, UserDAO
+from app.infra.db.rdb.dao import RoleDAO, UserDAO
 
 
 class DAO:
