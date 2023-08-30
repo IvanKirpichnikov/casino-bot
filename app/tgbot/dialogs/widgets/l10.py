@@ -20,18 +20,10 @@ class L10N(Text):
         manager: DialogManager
     ) -> str:
         l10n: TranslatorRunner = manager.middleware_data.get('l10n')
-<<<<<<< HEAD
-        if data is None:
-            text = l10n.get(self.key)
-            print(text)
-            return text
-        text = l10n.get(self.key, **data)
-        print(text)
-=======
+        
         if data:
             text = l10n.get(self.key, **data)
         else:
             text = l10n.get(self.key)
         
->>>>>>> test
         return text

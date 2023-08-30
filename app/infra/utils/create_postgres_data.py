@@ -1,7 +1,7 @@
-from contextlib import suppress
 import logging
+from contextlib import suppress
 
-from asyncpg import Connection, Pool, DuplicateObjectError
+from asyncpg import Connection, DuplicateObjectError, Pool
 
 from app.core.enums import RolesType
 
@@ -47,11 +47,7 @@ async def _create_roles_enum(connect: Connection) -> None:
     logger.debug('Creating type %r', 'roles')
     await connect.execute('''
         CREATE TYPE roles AS ENUM {};
-<<<<<<< HEAD
     '''.format(tuple(RolesType.get_all()))
-=======
-    '''.format(tuple(RolesType.get_all))
->>>>>>> test
     )
 
 
@@ -59,11 +55,6 @@ async def create_postgres_data(pool: Pool) -> None:
     async with pool.acquire() as connect:
         with suppress(DuplicateObjectError):
             await _create_roles_enum(connect)
-<<<<<<< HEAD
-        await _create_referrals_table(connect)
-        await _create_users_table(connect)
-=======
         await _create_users_table(connect)
         await _create_referrals_table(connect)
->>>>>>> test
         await _create_referrers_table(connect)
