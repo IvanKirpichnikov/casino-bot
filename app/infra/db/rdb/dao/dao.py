@@ -1,6 +1,6 @@
 from asyncpg import Connection
 
-from app.infra.postgres.dao import RoleDAO, UserDAO
+from app.infra.db.rdb.dao import RoleDAO, UserDAO
 
 
 class DAO:
@@ -8,7 +8,7 @@ class DAO:
     DAO class containing implemented all DAO
     
     """
-    __slots__ = ('connect', 'roles', 'referrals', 'users')
+    __slots__ = ('connect', 'role', 'referral', 'user')
     
     def __init__(self, connect: Connection) -> None:
         """
@@ -16,6 +16,6 @@ class DAO:
         :return None:
         
         """
-        self.roles = RoleDAO(connect)
+        self.role = RoleDAO(connect)
         # self.referrals = ReferralDAO(connect)
-        self.users = UserDAO(connect)
+        self.user = UserDAO(connect)

@@ -33,28 +33,32 @@ class ReferralDAO(AbstarctReferralDAO):
         )
     
     async def get_referrers_count(self, tid: int) -> ReferrersCountDTO:
-        cursor = await self.connect.cursor(
-            '''
-                SELECT referrers_count FROM referrals
-                JOIN users ON users.id = referrals.id
-                WHERE users.id = $1;
-            ''',
-            tid
-        )
-        data = await cursor.fetchrow()
-        return ReferrersCountDTO(count=data.get('referrers_count'))
+        connect = self.connect
+        async with connect.transaction(readonly=True):
+            cursor = await self.connect.cursor(
+                '''
+                    SELECT referrers_count FROM referrals
+                    JOIN users ON users.id = referrals.id
+                    WHERE users.id = $1;
+                ''',
+                tid
+            )
+            data = await cursor.fetchrow()
+            return ReferrersCountDTO(count=data.get('referrers_count'))
     
     async def get_deep_link(self, tid: int) -> DeepLinkDTO:
-        cursor = await self.connect.cursor(
-            '''
-                SELECT deep_link FROM referrals
-                JOIN users ON users.id = referrals.id
-                WHERE users.id = $1;
-            ''',
-            tid
-        )
-        data = await cursor.fetchrow()
-        return DeepLinkDTO(link=data.get('deep_link'))
+        connect = self.connect
+        async with connect.transaction(readonly=True):
+            cursor = await connect.cursor(
+                '''
+                    SELECT deep_link FROM referrals
+                    JOIN users ON users.id = referrals.id
+                    WHERE users.id = $1;
+                ''',
+                tid
+            )
+            data = await cursor.fetchrow()
+            return DeepLinkDTO(link=data.get('deep_link'))
     
     async def update_deep_link(self, tid: int, deep_link: str) -> None:
         await self.connect.execute(
