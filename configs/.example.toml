@@ -1,14 +1,14 @@
-[development]
-    [development.bot]
+[work]
+    [work.tgbot]
         token =
         slip_updates =
-    [development.psql]
+    [work.psql]
         host =
         port =
         user =
         password =
         database =
-    [development.redis]
+    [work.redis]
         redis_host =
         redis_port =
         redis_database =
