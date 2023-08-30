@@ -17,5 +17,9 @@ class L10N(Text):
     async def _render_text(self, data, manager: DialogManager) -> str:
         l10n: TranslatorRunner = manager.middleware_data.get('l10n')
         if data is None:
-            return l10n.get(self.key)
-        return l10n.get(self.key, **data)
+            text = l10n.get(self.key)
+            print(text)
+            return text
+        text = l10n.get(self.key, **data)
+        print(text)
+        return text

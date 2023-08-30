@@ -13,9 +13,5 @@ class ReferrerDAO(AbstractReferrerDAO):
     async def get_my_referrer(self, tid: int) -> UserDTO:
         cursor = await self.connect.cursor(
             '''
-                SELECT id, tid, cid, language, role, datetime
-                FROM users
-                WHERE users.id = (
-                    SELECT
             '''
         )
