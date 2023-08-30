@@ -2,13 +2,15 @@ from typing import Any, Awaitable, Callable, Dict
 
 from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject, User
-from asyncpg import Connection
 from fluentogram import TranslatorHub
 
-from app.infra.postgres import DAO
+from app.infra.db.rdb.dao.dao import DAO
 
 
 class L10NMiddleware(BaseMiddleware):
+    def __init__(self, hub: TranslatorHub) -> None:
+        self._hub = hub
+    
     async def __call__(
         self,
         handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
@@ -20,12 +22,9 @@ class L10NMiddleware(BaseMiddleware):
         if user is None:
             return await handler(event, data)
         
-        connect: Connection = data.get('connect')
         dao: DAO = data.get('dao')
-        user_language = await dao.users.get_language(user.id)
-        hub: TranslatorHub = data.get('_hub')
-        l10n = hub.get_translator_by_locale(user_language)
+        user_language = await dao.user.get_language(user.id)
         
-        data['l10n'] = l10n
+        data['l10n'] = self._hub.get_translator_by_locale(user_language)
         
         return await handler(event, data)

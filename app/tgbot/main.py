@@ -1,36 +1,26 @@
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
-from aiogram.fsm.storage.redis import RedisStorage, DefaultKeyBuilder
+from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from aiogram_dialog import setup_dialogs
-from asyncpg import create_pool
-from redis.asyncio import Redis
 
-from app.core.configs.config import config
+from app.core.configs.config import get_config
+from app.core.di.manager import Manager
+from app.tgbot.dialogs.register import register_dialogs
+from app.tgbot.handlers import router
 from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
 from app.tgbot.utils.get_translator_hub import get_translator_hub
-from app.tgbot.dialogs.register import register_dialogs
-from app.infra.utils.create_postgres_data import create_postgres_data
 
 
 async def main() -> None:
-    pool = await create_pool(
-        user=config.psql.user,
-        password=config.psql.password,
-        database=config.psql.database,
-        host=config.psql.host,
-        port=config.psql.port
-    )
-    redis = Redis(
-        host=config.redis.host,
-        port=config.redis.port,
-        password=config.redis.password,
-        db=config.redis.db
-    )
+    config = get_config()
+    manager = Manager(config)
+    hub = get_translator_hub()
+    pool = await manager.psql.pool
+    redis = await manager.redis.connect
     bot = Bot(
-        config.bot.token,
-        parse_mode=ParseMode.HTML
+        config.work.tgbot.token, parse_mode=ParseMode.HTML
     )
-    if config.bot.skip_updates:
+    if config.work.tgbot.skip_updates:
         await bot.delete_webhook(drop_pending_updates=True)
     
     storage = RedisStorage(
@@ -44,14 +34,15 @@ async def main() -> None:
     
     dp['redis'] = redis
     dp['pool'] = pool
-    dp['_hub'] = get_translator_hub()
     
-    dp.update.middleware(DAOMiddleware())
-    dp.update.middleware(L10NMiddleware())
+    dp.update.middleware(DAOMiddleware(pool))
+    dp.update.middleware(L10NMiddleware(hub))
     dp.callback_query.middleware(ThrottlingMiddleware())
+    dp.callback_query.middleware(DAOMiddleware(pool))
     dp.message.middleware(ThrottlingMiddleware())
     
-    await create_postgres_data(pool)
+    dp.include_router(router)
+    
     setup_dialogs(dp)
     register_dialogs(dp)
     
@@ -59,3 +50,4 @@ async def main() -> None:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())
     finally:
         await pool.close()
+        await redis.close()

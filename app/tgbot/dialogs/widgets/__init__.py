@@ -1,4 +1,4 @@
-from .l10_text import L10N
+from .l10 import L10N
 
 
 __all__ = (
