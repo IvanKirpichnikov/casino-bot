@@ -1,7 +1,7 @@
 import asyncio
 import logging
 
-from app.tgbot.main import main
+from app.presentstion.tgbot.main import main
 
 
 logging.basicConfig(level=logging.DEBUG)

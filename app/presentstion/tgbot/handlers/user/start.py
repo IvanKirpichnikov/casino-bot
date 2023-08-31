@@ -4,12 +4,11 @@ from aiogram import Router
 from aiogram.filters import CommandStart, CommandObject
 from aiogram.types import Message
 from aiogram_dialog import DialogManager, StartMode, ShowMode
-from fluentogram import TranslatorRunner
 
-from app.tgbot.states import MainMenuState
+from app.presentstion.tgbot.states import MainMenuState
 
 if TYPE_CHECKING:
-    from stubs import TranslatorRunner
+    pass
 
 
 router = Router()

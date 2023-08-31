@@ -1,11 +1,11 @@
 from aiogram_dialog import Dialog, Window, StartMode
 from aiogram_dialog.widgets.kbd import Start
 
-from app.tgbot.states.slots_machine import (
+from app.presentstion.tgbot.states.slots_machine import (
     RouletteState, SlotsMachineState,
     DiceState, BanditState
 )
-from app.tgbot.dialogs.widgets import L10N
+from app.presentstion.tgbot.dialogs.widgets import L10N
 
 
 slots_machine_dialog = Dialog(

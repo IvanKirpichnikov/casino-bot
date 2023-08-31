@@ -1,6 +1,6 @@
 from aiogram import Router
 
-from app.tgbot.handlers.user import start
+from app.presentstion.tgbot.handlers.user import start
 
 router = Router(name=__name__)
 files = (start,)

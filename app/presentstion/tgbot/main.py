@@ -5,10 +5,10 @@ from aiogram_dialog import setup_dialogs
 
 from app.core.configs.config import get_config
 from app.core.di.manager import Manager
-from app.tgbot.dialogs.register import register_dialogs
-from app.tgbot.handlers import router
-from app.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
-from app.tgbot.utils.get_translator_hub import get_translator_hub
+from app.presentstion.tgbot.dialogs.register import register_dialogs
+from app.presentstion.tgbot.handlers import router
+from app.presentstion.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
+from app.presentstion.tgbot.utils.get_translator_hub import get_translator_hub
 
 
 async def main() -> None:
