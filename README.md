@@ -7,14 +7,14 @@
 A telegram casino bot (?)
 
 ## Technologies
-- [aiogram](https://github.com/aiogram/aiogram) — Telegram Bot API framework
-- [aiogram_dialog](https://github.com/Tishka17/aiogram_dialog) — Interactive messages for Telegram
-- [fluentogram](https://github.com/Arustinal/fluentogram) — I18n tool
+- [Aiogram](https://github.com/aiogram/aiogram) — Telegram Bot API framework
+- [Aiogram Dialog](https://github.com/Tishka17/aiogram_dialog) — Interactive messages for Telegram
+- [Fluentogram](https://github.com/Arustinal/fluentogram) — I10n tool
 - [PostgreSQL](https://postgresql.org) — Relational Database
-- [clickhouse](https://clickhouse.com) — Column Database
+- [ClickHouse](https://clickhouse.com) — Column Database
 - [Redis](https://redis.io/) — Persistent k-v storage
 - [Taskiq](https://github.com/taskiq-python/taskiq) — Sheduler
-- [NATS](https://nats.io/) — Queue
+- [RabbitMQ](https://rabbitmq.com) — Queue
 
 
 ## Installation
