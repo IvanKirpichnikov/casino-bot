@@ -64,16 +64,3 @@ class _WorkConfig:
 @dataclass(frozen=True)
 class Config:
     work: _WorkConfig
-
-
-def get_config() -> Config:
-    data: Dict = Dynaconf(
-        settings_files=['configs/.toml']
-    ).as_dict()
-    
-    retort = Retort(
-        recipe=[
-            name_mapping(Config, name_style=NameStyle.UPPER)
-        ]
-    )
-    return retort.load(data, Config)
