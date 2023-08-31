@@ -1,3 +1,5 @@
+import asyncio
+
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
@@ -51,3 +53,6 @@ async def main() -> None:
     finally:
         await pool.close()
         await redis.close()
+
+
+asyncio.run(main())
