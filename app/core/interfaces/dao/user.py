@@ -1,47 +1,46 @@
-from abc import ABC, abstractmethod
-from datetime import datetime
+from abc import ABC
+from abc import abstractmethod
+
+from app.core import dto
 
 
 class AbstractUserDAO(ABC):
     @abstractmethod
-    async def add(self, tid: int, cid: int, dtutc: datetime) -> None:
+    async def add(self, model: dto.user.Add) -> None:
         """
-        Add user
+        Add user to data object
         
-        :param tid: user telegram id
-        :param cid: user chat id
-        :param dtutc: datetime utc format
+        :param model: src.core.dto.user.Add dto class
         :return: None
         
         """
     
     @abstractmethod
-    async def delete(self, tid: int) -> None:
+    async def remove(self, model: dto.user.Delete) -> None:
         """
-        Delete user
+        Remove a user from a data object
         
-        :param tid: user telegram id
+        :param model: src.core.dto.user.Delete dto class
         :return: None
-        
-        """
-
-    @abstractmethod
-    async def get_language(self, tid: int) -> str:
-        """
-        Get user's language code
-        
-        :param tid: user telegram id
-        :return: str
         
         """
     
     @abstractmethod
-    async def update_language(self, tid: int, lang_code: str) -> None:
+    async def get_language(self, model: dto.user.GetLanguage) -> dto.user.Language:
         """
-        Update user's language
+        Get user language code from data object
         
-        :param tid: user telegram id
-        :param lang_code: language code 2 characters long
+        :param model: src.core.dto.user.GetLanguage dto class
+        :return: src.core.dto.user.Language dto class
+        
+        """
+    
+    @abstractmethod
+    async def update_language(self, model: dto.user.UpdateLanguage) -> None:
+        """
+        Update user language in data object
+        
+        :param model: src.core.dto.user.UpdateLanguage dto class
         :return: None
         
         """
