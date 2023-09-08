@@ -6,7 +6,7 @@ from aiogram_dialog.widgets.text import Text
 from fluentogram import TranslatorRunner
 
 if TYPE_CHECKING:
-    from stubs import TranslatorRunner
+    from app.core.di.stubs.l10n import TranslatorRunner
 
 
 class L10N(Text):
@@ -19,11 +19,11 @@ class L10N(Text):
         data: Dict[str, Any],
         manager: DialogManager
     ) -> str:
-        l10n: TranslatorRunner = manager.middleware_data.get('l10n')
+        l10n: TranslatorRunner = manager.middleware_data.get('l10n', None)
+        
+        if l10n is None:
+            raise ValueError("There is no 'l10n' argument in middlewares")
         
         if data:
-            text = l10n.get(self.key, **data)
-        else:
-            text = l10n.get(self.key)
-        
-        return text
+            return l10n.get(self.key, **data)
+        return l10n.get(self.key)

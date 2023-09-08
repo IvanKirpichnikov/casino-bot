@@ -15,6 +15,7 @@ async def main() -> None:
     
     pool = await manager.psql.pool
     redis = await manager.redis.connect
+    storage = manager.redis.aiogram_storage
     
     bot = Bot(
         config.work.tgbot.token,
@@ -23,7 +24,6 @@ async def main() -> None:
     if config.work.tgbot.skip_updates:
         await bot.delete_webhook(drop_pending_updates=True)
     
-    storage = manager.redis.aiogram_storage
     dp = Dispatcher(
         storage=storage,
         events_isolation=storage.create_isolation()
