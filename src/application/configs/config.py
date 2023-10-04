@@ -1,19 +1,24 @@
 from dataclasses import dataclass
-from typing import Dict
-
-from adaptix import name_mapping, NameStyle, Retort
-from dynaconf import Dynaconf
+from typing import TYPE_CHECKING
 
 
 @dataclass(frozen=True)
 class _TGBotConfig:
     """
     :param token: Telegram bot token
-    :param skip_updates: skip bot updates if True
-    
+    :param skip_updates: skip bot updates if true
+
     """
     token: str
     skip_updates: bool
+    
+    if TYPE_CHECKING:
+        def __init__(
+            self,
+            token: str,
+            skip_updates: bool
+        ) -> None:
+            pass
 
 
 @dataclass(frozen=True)
@@ -31,6 +36,17 @@ class _PSQLConfig:
     user: str
     password: str
     database: str
+    
+    if TYPE_CHECKING:
+        def __init__(
+            self,
+            host: str,
+            port: int,
+            user: str,
+            password: str,
+            database: str
+        ) -> None:
+            ...
 
 
 @dataclass(frozen=True)
@@ -46,6 +62,16 @@ class _RedisConfig:
     port: int
     password: str
     db: int
+    
+    if TYPE_CHECKING:
+        def __init__(
+            self,
+            host: str,
+            port: int,
+            password: str,
+            db: str
+        ) -> None:
+            ...
 
 
 @dataclass(frozen=True)
@@ -59,8 +85,24 @@ class _WorkConfig:
     tgbot: _TGBotConfig
     psql: _PSQLConfig
     redis: _RedisConfig
+    
+    if TYPE_CHECKING:
+        def __init__(
+            self,
+            tgbot: _TGBotConfig,
+            psql: _PSQLConfig,
+            redis: _RedisConfig
+        ) -> None:
+            ...
 
 
 @dataclass(frozen=True)
 class Config:
     work: _WorkConfig
+    
+    if TYPE_CHECKING:
+        def __init__(
+            self,
+            work: _WorkConfig
+        ) -> None:
+            ...
