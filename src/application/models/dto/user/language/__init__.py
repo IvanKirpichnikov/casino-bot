@@ -5,5 +5,5 @@ from src.application.models.dto.user.language.update import Update
 __all__ = (
     'Get',
     'Language',
-    Update
+    'Update'
 )
