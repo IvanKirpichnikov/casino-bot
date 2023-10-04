@@ -3,7 +3,7 @@ import logging
 from asyncpg import Connection
 
 from src.application.models import dto
-from src.application.interfaces.dao.user import AbstractUserDAO
+from src.application.interfaces.repository.user import AbstractUserDAO
 
 logger = logging.getLogger(__name__)
 

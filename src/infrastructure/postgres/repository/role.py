@@ -1,6 +1,6 @@
 from asyncpg import Connection
 
-from src.application.interfaces.dao.role import AbstractRoleDAO
+from src.application.interfaces.repository.role import AbstractRoleDAO
 from src.application.models.dto import RoleDTO
 
 
