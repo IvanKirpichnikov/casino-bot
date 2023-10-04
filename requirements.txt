@@ -6,3 +6,4 @@ asyncpg==0.28.0
 dynaconf==3.2.0
 adaptix==3.0.0a4
 cachetools==4.2.4
+mypy==1.5.1
