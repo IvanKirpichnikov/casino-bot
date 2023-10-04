@@ -3,7 +3,7 @@ from typing import Optional
 from aiogram.fsm.storage.redis import DefaultKeyBuilder, RedisStorage
 from redis.asyncio import Redis as AioRedis
 
-from app.core.configs.config import Config
+from src.core.configs.config import Config
 
 
 class Redis:

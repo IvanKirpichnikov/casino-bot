@@ -3,8 +3,8 @@ from datetime import datetime
 
 from asyncpg import Connection
 
-from app.core import dto
-from app.core.interfaces.dao.user import AbstractUserDAO
+from src.core import dto
+from src.core.interfaces.dao.user import AbstractUserDAO
 
 logger = logging.getLogger(__name__)
 

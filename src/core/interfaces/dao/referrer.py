@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.core.dto import UserDTO
+from src.core.dto import UserDTO
 
 
 class AbstractReferrerDAO(ABC):

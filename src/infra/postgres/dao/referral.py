@@ -1,7 +1,7 @@
 from asyncpg import Connection
 
-from app.core.dto import ReferrersCountDTO, DeepLinkDTO
-from app.core.interfaces.dao.referral import AbstarctReferralDAO
+from src.core.dto import ReferrersCountDTO, DeepLinkDTO
+from src.core.interfaces.dao.referral import AbstarctReferralDAO
 
 
 class ReferralDAO(AbstarctReferralDAO):

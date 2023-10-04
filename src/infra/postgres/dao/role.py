@@ -2,8 +2,8 @@ from typing import List
 
 from asyncpg import Connection
 
-from app.core.interfaces.dao.role import AbstractRoleDAO
-from app.core.dto import RoleDTO
+from src.core.interfaces.dao.role import AbstractRoleDAO
+from src.core.dto import RoleDTO
 
 
 class RoleDAO(AbstractRoleDAO):

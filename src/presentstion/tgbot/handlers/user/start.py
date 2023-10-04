@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart, CommandObject
 from aiogram.types import Message
 from aiogram_dialog import DialogManager, StartMode, ShowMode
 
-from app.presentstion.tgbot.states import MainMenuState
+from src.presentstion.tgbot.states import MainMenuState
 
 if TYPE_CHECKING:
     pass

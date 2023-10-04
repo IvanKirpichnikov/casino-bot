@@ -1,7 +1,7 @@
 from aiogram import Dispatcher
 
-from app.presentstion.tgbot.dialogs.user.main_menu import main_menu_dialog
-from app.presentstion.tgbot.dialogs.user.slots_machine.register import register_sm_dialog
+from src.presentstion.tgbot.dialogs.user.main_menu import main_menu_dialog
+from src.presentstion.tgbot.dialogs.user.slots_machine.register import register_sm_dialog
 
 
 def register_user_dialogs(dp: Dispatcher) -> None:

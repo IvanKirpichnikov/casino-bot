@@ -1,4 +1,4 @@
-from app.presentstion.tgbot.setups.middlewares import setup_inner_middleware
+from src.presentstion.tgbot.setups.middlewares import setup_inner_middleware
 
 
 __all__ = (

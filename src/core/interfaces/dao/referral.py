@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.core.dto import DeepLinkDTO, ReferrersCountDTO
+from src.core.dto import DeepLinkDTO, ReferrersCountDTO
 
 
 class AbstarctReferralDAO(ABC):

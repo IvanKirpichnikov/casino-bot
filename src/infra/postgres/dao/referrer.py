@@ -1,7 +1,7 @@
 from asyncpg import Connection
 
-from app.core.dto import UserDTO
-from app.core.interfaces.dao.referrer import AbstractReferrerDAO
+from src.core.dto import UserDTO
+from src.core.interfaces.dao.referrer import AbstractReferrerDAO
 
 
 class ReferrerDAO(AbstractReferrerDAO):

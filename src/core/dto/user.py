@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime as dt
 
-from app.core.enums import RolesType
+from src.core.enums import RolesType
 
 
 @dataclass(frozen=True)

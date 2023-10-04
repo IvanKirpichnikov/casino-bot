@@ -5,7 +5,7 @@ from aiogram.enums import ChatType
 from aiogram.filters import ChatMemberUpdatedFilter, MEMBER, KICKED
 from aiogram.types import ChatMemberUpdated
 
-from app.infra.postgres import DAO
+from src.infra.postgres import DAO
 
 
 router = Router()

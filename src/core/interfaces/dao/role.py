@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from app.core.dto import RoleDTO
+from src.core.dto import RoleDTO
 
 
 class AbstractRoleDAO(ABC):

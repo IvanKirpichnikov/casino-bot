@@ -3,10 +3,10 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 
-from app.core.di.manager import Manager
-from app.core.di.manager.config import ConfigManager
-from app.presentstion.tgbot.handlers import router
-from app.presentstion.tgbot.setups.setups import setups
+from src.core.di.manager import Manager
+from src.core.di.manager.config import ConfigManager
+from src.presentstion.tgbot.handlers import router
+from src.presentstion.tgbot.setups.setups import setups
 
 
 async def main() -> None:

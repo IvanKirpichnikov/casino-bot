@@ -2,7 +2,7 @@ from aiogram import Dispatcher
 from asyncpg import Pool
 from fluentogram import TranslatorHub
 
-from app.presentstion.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
+from src.presentstion.tgbot.middlewares import DAOMiddleware, L10NMiddleware, ThrottlingMiddleware
 
 
 def setup_inner_middleware(

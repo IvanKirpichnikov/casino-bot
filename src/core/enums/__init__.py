@@ -1,4 +1,4 @@
-from app.core.enums.roles_type import RolesType
+from src.core.enums.roles_type import RolesType
 from .languages import LanguagesType
 
 __all__ = (

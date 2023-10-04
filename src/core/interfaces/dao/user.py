@@ -1,7 +1,7 @@
 from abc import ABC
 from abc import abstractmethod
 
-from app.core import dto
+from src.core import dto
 
 
 class AbstractUserDAO(ABC):

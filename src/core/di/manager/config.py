@@ -3,7 +3,7 @@ from typing import Any, Dict, Optional
 from adaptix import name_mapping, NameStyle, Retort
 from dynaconf import Dynaconf
 
-from app.core.configs.config import Config
+from src.core.configs.config import Config
 
 
 class ConfigManager:

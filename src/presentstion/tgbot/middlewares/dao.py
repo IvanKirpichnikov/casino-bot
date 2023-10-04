@@ -4,7 +4,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject
 from asyncpg import Pool
 
-from app.infra.postgres.dao.dao import DAO
+from src.infra.postgres.dao.dao import DAO
 
 
 class DAOMiddleware(BaseMiddleware):

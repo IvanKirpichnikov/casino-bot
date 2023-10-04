@@ -1,12 +1,12 @@
 from aiogram_dialog import Dialog, Window, StartMode
 from aiogram_dialog.widgets.kbd import Start, Row
 
-from app.presentstion.tgbot.states.main_menu import MainMenuState
-from app.presentstion.tgbot.states.profile import ProfileState
-from app.presentstion.tgbot.states.tops import TopsState
-from app.presentstion.tgbot.states.slots_machine import SlotsMachineState
-from app.presentstion.tgbot.states.about import AboutState
-from app.presentstion.tgbot.dialogs.widgets import L10N
+from src.presentstion.tgbot.states.main_menu import MainMenuState
+from src.presentstion.tgbot.states.profile import ProfileState
+from src.presentstion.tgbot.states.tops import TopsState
+from src.presentstion.tgbot.states.slots_machine import SlotsMachineState
+from src.presentstion.tgbot.states.about import AboutState
+from src.presentstion.tgbot.dialogs.widgets import L10N
 
 
 main_menu_dialog = Dialog(

@@ -1,9 +1,9 @@
-from app.core.configs.config import Config
-from app.core.di.manager.config import ConfigManager
-from app.core.di.manager.l10n import L10N
-from app.core.di.manager.psql import Postgresql
-from app.core.di.manager.rabbit import Rabbit
-from app.core.di.manager.redis import Redis
+from src.core.configs.config import Config
+from src.core.di.manager.config import ConfigManager
+from src.core.di.manager.l10n import L10N
+from src.core.di.manager.psql import Postgresql
+from src.core.di.manager.rabbit import Rabbit
+from src.core.di.manager.redis import Redis
 
 
 class Manager:
