@@ -1,15 +1,31 @@
 [work]
     [work.tgbot]
-        token =
-        slip_updates =
+        token = # String type
+        slip_updates = # Bool type
     [work.psql]
-        host =
-        port =
-        user =
-        password =
-        database =
+        host = # String type
+        port = # Integer type
+        user = # String type
+        password = # String type
+        database = # Integer type
     [work.redis]
-        redis_host =
-        redis_port =
-        redis_database =
-        redis_password =
+        redis_host = # String type
+        redis_port = # Intger type
+        redis_database = # Intger type
+        redis_password = # String type
+
+[test]
+    [test.tgbot]
+        token = # String type
+        slip_updates = # Bool type
+    [test.psql]
+        host = # String type
+        port = # Integer type
+        user = # String type
+        password = # String type
+        database = # Integer type
+    [test.redis]
+        redis_host = # String type
+        redis_port = # Intger type
+        redis_database = # Intger type
+        redis_password = # String type
