@@ -6,7 +6,7 @@ from aiogram_dialog.widgets.text import Text
 from fluentogram import TranslatorRunner
 
 if TYPE_CHECKING:
-    from src.core.di.stubs.l10n import TranslatorRunner
+    from src.application.di.stubs.l10n import TranslatorRunner
 
 
 class L10N(Text):

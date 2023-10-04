@@ -4,7 +4,7 @@ from aiogram import BaseMiddleware
 from aiogram.types import TelegramObject, User
 from fluentogram import TranslatorHub
 
-from src.infra.postgres.dao.dao import DAO
+from src.infrastructure.postgres.dao.dao import DAO
 
 
 class L10NMiddleware(BaseMiddleware):

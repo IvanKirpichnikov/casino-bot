@@ -3,8 +3,8 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.enums import ParseMode
 
-from src.core.di.manager import Manager
-from src.core.di.manager.config import ConfigManager
+from src.application.di.manager import Manager
+from src.application.di.manager.config import ConfigManager
 from src.presentstion.tgbot.handlers import router
 from src.presentstion.tgbot.setups.setups import setups
 
