@@ -1,5 +1,4 @@
 .idea
 venv
-configs/.toml
-
+configs/settings.toml
 **/__pycache__
