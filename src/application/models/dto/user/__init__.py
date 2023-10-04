@@ -1,11 +1,10 @@
-from src.application.models.dto.user.language import GetLanguage
-from src.application.models.dto.user.language import Language
-from src.application.models.dto.user.language import UpdateLanguage
+from src.application.models.dto.user import language
+from src.application.models.dto.user.add import Add
+from src.application.models.dto.user.delete import Delete
+
 
 __all__ = (
+    'language',
     'Add',
-    'Delete',
-    'GetLanguage',
-    'Language',
-    'UpdateLanguage'
+    'Delete'
 )
