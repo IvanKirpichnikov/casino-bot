@@ -4,24 +4,47 @@
 ![Status](https://img.shields.io/badge/Status-Planning-f0e511?style=flat-square)
 ![Licence](https://img.shields.io/badge/License-MIT-a90001?style=flat-square&link=https://opensource.org/license/mit/)
 
-A telegram casino bot (?)
 
 ## Technologies
-- [Aiogram](https://github.com/aiogram/aiogram) — Telegram Bot API framework
-- [Aiogram Dialog](https://github.com/Tishka17/aiogram_dialog) — Interactive messages for Telegram
-- [Fluentogram](https://github.com/Arustinal/fluentogram) — I10n tool
-- [PostgreSQL](https://postgresql.org) — Relational Database
-- [ClickHouse](https://clickhouse.com) — Column Database
-- [Redis](https://redis.io/) — Persistent k-v storage
-- [Taskiq](https://github.com/taskiq-python/taskiq) — Sheduler
-- [RabbitMQ](https://rabbitmq.com) — Queue
+- [aiogram](https://github.com/aiogram/aiogram) — Telegram bot API framework
+- [aiogram-dialog](https://github.com/Tishka17/aiogram_dialog) — Interactive inline keyboard for Telegram
+- [fluentogram](https://github.com/Arustinal/fluentogram) — L10n/I18n tool
+- [postgresql](https://postgresql.org) — SQL relational database
+- [clickhouse](https://clickhouse.com) — SQL column database
+- [redis](https://redis.io/) — NoSQL key value database
+- [taskiq](https://github.com/taskiq-python/taskiq) — Queue tasks
+- [nats](https://nats.io) — Message broker
 
 
-## Installation
-1) \#
-2) \#
-3) \#
+## Installation:
+1) Installing a project from GitHub.
+   ```bash
+   git clone https://github.com/IvanKirpichnikov/casino-bot.git
+   ```
+   
+2) Creating python venv.
+   ```bash
+   python3 -m venv venv
+   ```
+   
+3) Enabling python venv.\
+   Windows:
+   ```bash
+   source venv/Scripts/activate
+   ```
+   Linux:
+   ```bash
+   source venv/bin/activate
+   ```
 
-# Credits
-- [@IvanKirpichnikov](https://github.com/IvanKirpichnikov)
-- [@shihkebab](https://github.com/shihkebab)
+4) Installing a requirements packets.
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+
+5) Create and filling out example config.
+
+6) Run project.
+   ```bash
+   python -m src.presentation.tgbot
+   ```
