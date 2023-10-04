@@ -3,7 +3,9 @@ aiogram_dialog==2.0.0b21
 redis==4.6.0
 fluentogram==1.1.6
 asyncpg==0.28.0
-dynaconf==3.2.0
 adaptix==3.0.0a4
 cachetools==4.2.4
 mypy==1.5.1
+toml==0.10.2
+types-toml==0.10.8.7
+
