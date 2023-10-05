@@ -8,6 +8,8 @@ from src.application.models.dto.base import DataTransferObject
 class Delete(DataTransferObject):
     telegram_id: int
     
+    __slots__ = ('telegram_id',)
+    
     if TYPE_CHECKING:
         def __init__(
             self,

@@ -11,6 +11,12 @@ class Add(DataTransferObject):
     chat_id: int
     datetimeutc: datetime
     
+    __slots__ = (
+        'telegram_id',
+        'chat_id',
+        'datetimeutc'
+    )
+    
     if TYPE_CHECKING:
         def __init__(
             self,
